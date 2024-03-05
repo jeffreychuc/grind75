@@ -44,10 +44,10 @@ def is_anagram(s: str, t: str) -> bool:
                 del input_char_count[c]
         else:
             return False
-    # you can run bool(dict) to check if a dict has any keys in it
-    if bool(input_char_count):
-        return False
-    return True
+    # you can check the length of a dict
+    if len(input_char_count) == 0:
+        return True
+    return False
 
 
 def get_char_count(s: str) -> Dict:
