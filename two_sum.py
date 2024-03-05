@@ -38,20 +38,36 @@ from typing import List
 # Time: O(n^2)
 # Space: O(1)?
 def two_sum(nums: List[int], target: int) -> List[int]:
-    res = []
     for i in range(len(nums)):
-        for j in range(1, len(nums)):
+        # has to be i + 1 because we cant use the same element twice
+        for j in range(i + 1, len(nums)):
             if (nums[i] + nums[j]) == target:
-                res = [i, j]
-                break
-    return res
+                return [i, j]
+    return []
 
 
+# hashmap solution
+# Time: O(n)
+# Space: O(n)?
 def two_sum_hashmap(nums: List[int], target: int) -> List[int]:
-    pass
+    val_map = {}
+    for i, val in enumerate(nums):
+        lookup = target - val
+        if lookup in val_map:
+            return [i, val_map[lookup]]
+        else:
+            val_map[val] = i
+    return []
 
 
 print(two_sum([2, 7, 11, 15], 9))
 print(two_sum([3, 2, 4], 6))
 print(two_sum([3, 3], 6))
+print(two_sum([2, 5, 5, 11], 10))
 print(two_sum([-1, -2, -3, -4, -5], -8))
+print("\n")
+print(two_sum_hashmap([2, 7, 11, 15], 9))
+print(two_sum_hashmap([3, 2, 4], 6))
+print(two_sum_hashmap([3, 3], 6))
+print(two_sum_hashmap([2, 5, 5, 11], 10))
+print(two_sum_hashmap([-1, -2, -3, -4, -5], -8))
