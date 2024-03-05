@@ -40,11 +40,15 @@ from typing import List
 def two_sum(nums: List[int], target: int) -> List[int]:
     res = []
     for i in range(len(nums)):
-        for j in range(len(nums)):
+        for j in range(1, len(nums)):
             if (nums[i] + nums[j]) == target:
                 res = [i, j]
                 break
     return res
+
+
+def two_sum_hashmap(nums: List[int], target: int) -> List[int]:
+    pass
 
 
 print(two_sum([2, 7, 11, 15], 9))
