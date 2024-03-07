@@ -61,3 +61,41 @@ def is_palindrome(s: str) -> bool:
 
 print(is_palindrome("Aa"))
 print(is_palindrome("A man, a plan, a canal: Panama"))
+
+
+# if we dont use the builtin functions we can determine if its a character by checking if character is alphanumeric
+# by checking ord values
+# ie: ord('A') <= ord('Z') etc for a,z and 0,9.  all of those characters are in order for their ord value
+
+
+def is_char_or_num(s: str) -> bool:
+    print(f"checking if {s} is a char or num")
+    ord_in = ord(s)
+    print(ord_in)
+    return (
+        ord("A") <= ord_in <= ord("Z")
+        or ord("a") <= ord_in <= ord("z")
+        or ord("0") <= ord_in <= ord("9")
+    )
+
+
+def is_palendrome_no_memory(s: str) -> bool:
+    if len(s) <= 1:
+        return True
+    p = 0
+    q = len(s) - 1
+    while p < q:
+        # need p < q conditional so we dont go out of bounds
+        while p < q and not is_char_or_num(s[p]):
+            p += 1
+        while p < q and not is_char_or_num(s[q]):
+            q -= 1
+        # once both are alphanumeric we can do == comparision
+        if s[p].lower() != s[q].lower():
+            return False
+        p += 1
+        q -= 1
+    return True
+
+
+print(is_palendrome_no_memory("A man, a plan, a canal: Panama"))
