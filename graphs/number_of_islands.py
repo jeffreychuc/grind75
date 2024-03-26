@@ -78,10 +78,10 @@ def num_islands(grid: List[List[str]]) -> int:
     return islands
 
 
-grid = [
+g = [
     ["1", "1", "0", "0", "0"],
     ["1", "1", "0", "0", "0"],
     ["0", "0", "1", "0", "0"],
     ["0", "0", "0", "1", "1"]
 ]
-print(num_islands(grid))
+print(num_islands(g))
