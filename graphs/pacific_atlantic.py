@@ -66,12 +66,12 @@ def pacific_atlantic(heights: List[List[int]]) -> List[List[int]]:
     row = len(heights)
     col = len(heights[0])
 
-    def dfs(x: int, y: int, ocean: Set, prevHeight: int):
+    def dfs(x: int, y: int, ocean: Set, prev_height: int):
         # if we've already visited a location
         # or if x is out of bounds or if y is out of bounds
         # or ir x is hitting the edge or if y is hitting the edge
-        # or if the height is less than the prevHeight
-        if (x, y) in ocean or x < 0 or y < 0 or x == row or y == col or heights[x][y] < prevHeight:
+        # or if the height is less than the prev_height
+        if (x, y) in ocean or x < 0 or y < 0 or x == row or y == col or heights[x][y] < prev_height:
             return
         ocean.add((x, y))
         # now check all 4 neighbors
