@@ -90,6 +90,8 @@ def pacific_atlantic(heights: List[List[int]]) -> List[List[int]]:
         dfs(x, 0, pacific, heights[x][0])
         dfs(x, col - 1, atlantic, heights[x][col - 1])
 
+    # find the intersection of both sets because
+    # we want the water to be able to flow into both oceans
     res = pacific.intersection(atlantic)
     return [[x, y] for x, y in res]
 
