@@ -46,7 +46,7 @@ def level_order(root: Optional[TreeNode]) -> List[List[int]]:
         level_res = []  # result for the current level
         for i in range(len(queue)):  # for each element in the queue right now loop
             curr_node = queue.popleft()  # pull node out of the queue
-            if curr_node:
+            if curr_node:  # curr_node could be None
                 level_res.append(curr_node.val)
                 # add the value of the current node into the result array for the
                 # current level of the tree we're looking at
