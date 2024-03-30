@@ -88,3 +88,4 @@ def search(nums: List[int], target: int) -> int:
 # Output: 4
 
 print(search([4, 5, 6, 7, 0, 1, 2], 0))
+print(search([1000, 1001, 1, 4, 6, 999], 999))
