@@ -69,3 +69,32 @@ intervals = [[1, 3], [6, 9]]
 newInterval = [2, 5]
 
 print(insert(intervals, newInterval))
+
+# solution using enumerate
+# class Solution:
+#     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+#         res = []
+#
+#         # we want to range over the index here so we can use the index to slice, we could probably also enumerate
+#         for i, inter in enumerate(intervals):
+#             # iterate through ad append to res
+#             # IF we find where the new Interval should go append it to the res or merge
+#             # continue until we run out of intervals to append
+#             start, end = inter
+#             start_new_inter, end_new_inter = newInterval
+#             # if the max of the new interval is less than the start of the next interval we can append the new interval
+#             # + rest of the intervals into the result
+#             if end_new_inter < start:
+#                 res.append(newInterval)
+#                 res = res + intervals[i:]
+#                 return res
+#             # if the start of the new interval is greater than the end of the current interval being ranged
+#             # over append the current interval
+#             elif start_new_inter > end:
+#                 res.append(inter)
+#             else:
+#                 newInterval = [min(newInterval[0], inter[0]), max(newInterval[1], inter[1])]
+#
+#         res.append(newInterval)
+#
+#         return res
