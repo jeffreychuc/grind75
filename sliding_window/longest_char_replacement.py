@@ -37,21 +37,21 @@
 # 4 - (3) = 1 k
 
 def character_replacement(s: str, k: int) -> int:
+    window_map = {}
     l = 0
     res = 0
-    count = {}
-
     for r in range(len(s)):
-        count[s[r]] = 1 + count.get(s[r], 0)
-        print(count)
-        # length_of_window = r - l + 1
-        if (r - l + 1) - max(count.values()) > k:
-            count[s[l]] -= 1  # remove count of character from left character
-            l += 1  # shift left pointer right
+        window_map[s[r]] = 1 + window_map.get(s[r], 0)
 
+        # get length of current window minus the max char count in the window
+        # IE if k == 1 and we have "AABA" max(count.values()) should return 3
+        # and the length of the current window is 4 so which is within target of what we're trying to
+        # find
+        # if its greater than then we want to move the left pointer as thats too many chars
+        if (r - l + 1) - max(window_map.values()) > k:
+            window_map[s[l]] -= 1
+            l += 1
         res = max(res, r - l + 1)
-        print(res)
-
     return res
 
 
