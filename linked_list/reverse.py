@@ -9,17 +9,27 @@ class ListNode:
 
 
 def reverse_list(head: Optional[ListNode]) -> Optional[ListNode]:
+    # set previous node to None, theres no previous node at the start of
+    # the LL
     prev = None
+    # set the current node to the head of the LL
     curr = head
+
+    # while a current node is available.  when curr = None that means we reached the end of the LL
     while curr:
-        # get the next node
-        next = curr.next
-        # reverse the pointer for current to point to previous node
+        # save the next node
+        nex = curr.next
+
+        # set current.next to the previous node to reverse the connection
         curr.next = prev
-        # update the previous node to the current node
+
+        # the new previous node is now the current node
         prev = curr
-        # move to the next node in the list
-        curr = next
+
+        # now we advance current to the next node we saved at the start
+        curr = nex
+
+    # curr will === none when it ends the while loop, so return prev
     return prev
 
 
