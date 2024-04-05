@@ -83,12 +83,12 @@ def pacific_atlantic(heights: List[List[int]]) -> List[List[int]]:
     # check the top and bottom row of the matrix, pacific touching and atlantic touching
     for y in range(col):
         dfs(0, y, pacific, heights[0][y])
-        dfs(row - 1, y, atlantic, heights[row - 1][y])
+        dfs(row - 1, y, atlantic, heights[row - 1][y])  # using row - 1 here because the y is the col
 
     # check the left and right col of the matrix, pacific touching and atlantic touching
     for x in range(row):
         dfs(x, 0, pacific, heights[x][0])
-        dfs(x, col - 1, atlantic, heights[x][col - 1])
+        dfs(x, col - 1, atlantic, heights[x][col - 1])  # using col here because x is the row
 
     # find the intersection of both sets because
     # we want the water to be able to flow into both oceans
