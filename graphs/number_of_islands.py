@@ -85,3 +85,36 @@ g = [
     ["0", "0", "0", "1", "1"]
 ]
 print(num_islands(g))
+
+
+# NB: adding DFS solution here
+
+def num_islands_dfs(grid: List[List[str]]) -> int:
+    # DFS? start at 0,0 if 0,0 is in the SET of searched then skip, keep going till all of the map is done
+    # if its not in the set search up down left right and add all of those to the set until you cant anymore,
+    # once thats done +1 island
+    ROW = len(grid)
+    COL = len(grid[0])
+
+    island_count = 0
+    already_checked = set()
+
+    def dfs(x: int, y: int):
+        if (x, y) in already_checked or x == ROW or y == COL or x < 0 or y < 0 or grid[x][y] == "0":
+            return
+        already_checked.add((x, y))
+        # print("{x}, {y} is land so checking up down left right")
+        dfs(x + 1, y)
+        dfs(x - 1, y)
+        dfs(x, y + 1)
+        dfs(x, y - 1)
+
+    for x in range(ROW):
+        for y in range(COL):
+            # if (x,y) has not been visited and it is land, start a new search for an island from that origin
+            if (x, y) not in already_checked and grid[x][y] == "1":
+                dfs(x, y)  # this will mark all adjacent land as searched by adding it to "already_checked"
+                print(f"adding one to island after checking origin {x}, {y}")
+                island_count += 1
+
+    return island_count
