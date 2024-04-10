@@ -114,7 +114,10 @@ def num_islands_dfs(grid: List[List[str]]) -> int:
             # if (x,y) has not been visited and it is land, start a new search for an island from that origin
             if (x, y) not in already_checked and grid[x][y] == "1":
                 dfs(x, y)  # this will mark all adjacent land as searched by adding it to "already_checked"
-                print(f"adding one to island after checking origin {x}, {y}")
+                # print(f"adding one to island after checking origin {x}, {y}")
                 island_count += 1
 
     return island_count
+
+
+print(num_islands_dfs(g))
