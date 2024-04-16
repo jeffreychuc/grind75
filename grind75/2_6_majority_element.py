@@ -63,5 +63,5 @@ def majority_element(nums: List[int]) -> int:
     for ele in nums:
         if ele == candidate:
             count += 1
-
+    
     return candidate if count > n / 2 else -1
