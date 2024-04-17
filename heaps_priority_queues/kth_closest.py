@@ -45,3 +45,24 @@ class Solution:
         res.sort(key=lambda tup: tup[0])
 
         return [[tup[1], tup[2]] for tup in res[:k]]
+
+
+# cleaner heap solution
+class SolutionClean:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        # calculate the distances for each point, we can use a min heap to get the least distances or
+        # we can do an array with distances and sort?
+
+        minHeap = []
+
+        for x, y in points:
+            dist = math.sqrt((x) ** 2 + (y) ** 2)
+            heapq.heappush(minHeap, [dist, x, y])
+
+        res = []
+
+        for _ in range(k):
+            point_tup = heapq.heappop(minHeap)
+            res.append([point_tup[1], point_tup[2]])
+
+        return res
