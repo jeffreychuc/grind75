@@ -28,3 +28,19 @@ def k_closest(points: List[List[int]], k: int) -> List[List[int]]:
 
 
 print(k_closest([[1, 3], [-2, 2]], 1))  # [-2, 2]
+
+
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        # calculate the distances for each point, we can use a min heap to get the least distances or
+        # we can do an array with distances and sort?
+
+        res = []
+
+        for x, y in points:
+            distance = math.sqrt((x ** 2) + (y ** 2))
+            res.append((distance, x, y))
+
+        res.sort(key=lambda tup: tup[0])
+
+        return [[tup[1], tup[2]] for tup in res[:k]]
