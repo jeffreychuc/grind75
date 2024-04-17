@@ -30,6 +30,7 @@ def k_closest(points: List[List[int]], k: int) -> List[List[int]]:
 print(k_closest([[1, 3], [-2, 2]], 1))  # [-2, 2]
 
 
+# min heap has better performance because min heap doesnt need to sort through each element?
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         # calculate the distances for each point, we can use a min heap to get the least distances or
