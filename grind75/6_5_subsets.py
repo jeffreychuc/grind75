@@ -31,7 +31,14 @@ from typing import List
 
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        # backtracking
+        # again another DFS backtracking solution.  One thing to realize is the
+        # decision tree for this is different than the phone number
+        # problem because this is a subset problem
+        # for subsets we have the option of either taking or not taking each element
+        # so for the backtrack recursive call portion we need to
+        # do both paths
+
+        # for the phone number problem you just take until you reach the end
         self.res = []
 
         # base case, if there's no numbers in nums just return an empty array
